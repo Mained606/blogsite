@@ -1192,4 +1192,43 @@ section h2:after {
     .project-item {
         padding: 15px;
     }
+}
+
+/* 타이핑 애니메이션 스타일 */
+.static-text {
+    font-weight: 700;
+    display: inline;
+}
+
+.typewriter, .typewriter-sub {
+    display: inline-block;
+    position: relative;
+    min-height: 1.2em;
+}
+
+.typewriter {
+    font-weight: 700;
+}
+
+.typewriter::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 0;
+    height: 100%;
+    border-right: 3px solid;
+    animation: blink 0.7s infinite;
+}
+
+.typewriter-sub {
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    line-height: 1.5;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 } 

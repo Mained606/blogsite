@@ -6,6 +6,49 @@ AOS.init({
     easing: 'ease-in-out'
 });
 
+// 타이핑 애니메이션 클래스
+class TypeWriter {
+    constructor(element, texts, speed = 100, deleteSpeed = 50, pauseTime = 2000) {
+        this.element = element;
+        this.texts = texts.split('|');
+        this.speed = speed;
+        this.deleteSpeed = deleteSpeed;
+        this.pauseTime = pauseTime;
+        this.textIndex = 0;
+        this.charIndex = 0;
+        this.isDeleting = false;
+        this.type();
+    }
+
+    type() {
+        const currentText = this.texts[this.textIndex];
+        
+        if (this.isDeleting) {
+            this.element.textContent = currentText.substring(0, this.charIndex - 1);
+            this.charIndex--;
+        } else {
+            this.element.textContent = currentText.substring(0, this.charIndex + 1);
+            this.charIndex++;
+        }
+
+        let typeSpeed = this.speed;
+
+        if (this.isDeleting) {
+            typeSpeed = this.deleteSpeed;
+        }
+
+        if (!this.isDeleting && this.charIndex === currentText.length) {
+            typeSpeed = this.pauseTime;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.charIndex === 0) {
+            this.isDeleting = false;
+            this.textIndex = (this.textIndex + 1) % this.texts.length;
+        }
+
+        setTimeout(() => this.type(), typeSpeed);
+    }
+}
+
 // DOM이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded');
@@ -719,6 +762,21 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && resumeModal.style.display === 'block') {
             closeResumeModal();
+        }
+    });
+
+    // 타이핑 애니메이션 초기화
+    const typewriterElements = document.querySelectorAll('.typewriter');
+    console.log('Typewriter elements:', typewriterElements);
+
+    typewriterElements.forEach(element => {
+        if (element) {
+            const texts = element.getAttribute('data-text');
+            console.log('Element texts:', texts);
+            // 타이핑 속도 설정
+            const speed = 100;
+            const deleteSpeed = 50;
+            new TypeWriter(element, texts, speed, deleteSpeed);
         }
     });
 }); 
