@@ -779,4 +779,13 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
             new TypeWriter(element, texts, speed, deleteSpeed);
         }
     });
+
+    // 스크롤 프로그레스 바
+    const scrollProgress = document.querySelector('.scroll-progress');
+    
+    window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.scrollY / totalHeight) * 100;
+        scrollProgress.style.width = `${progress}%`;
+    });
 }); 

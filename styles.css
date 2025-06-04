@@ -29,6 +29,32 @@ body {
     padding: 0.5rem 0;
 }
 
+.navbar .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
 /* 히어로 섹션 */
 .hero-section {
     height: 100vh;
@@ -1231,4 +1257,31 @@ section h2:after {
     50% {
         border-color: transparent;
     }
+}
+
+/* 스크롤 프로그레스 바 */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent-color);
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* Unity 아이콘 스타일 */
+.fa-unity {
+    color: #ffffff;
+    margin-right: 5px;
+}
+
+.navbar-brand .fa-unity {
+    font-size: 1.2em;
+}
+
+.static-text .fa-unity {
+    font-size: 1em;
+    vertical-align: middle;
 } 
