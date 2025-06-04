@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // 스크롤 시 네비게이션 바 스타일 변경
     const navbar = document.querySelector('.navbar');
     let lastScrollTop = 0;
+    let isMouseNearTop = false;
+
+    // 마우스 움직임 감지
+    document.addEventListener('mousemove', function(e) {
+        isMouseNearTop = e.clientY <= 60;
+        if (isMouseNearTop) {
+            navbar.style.transform = 'translateY(0)';
+        } else if (window.pageYOffset > 50) {
+            navbar.style.transform = 'translateY(-100%)';
+        }
+    });
 
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -20,12 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (scrollTop > 50) {
             navbar.classList.add('scrolled');
             
-            if (scrollTop > lastScrollTop) {
-                // 아래로 스크롤
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                // 위로 스크롤
-                navbar.style.transform = 'translateY(0)';
+            if (!isMouseNearTop) {
+                if (scrollTop > lastScrollTop) {
+                    // 아래로 스크롤
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // 위로 스크롤
+                    navbar.style.transform = 'translateY(0)';
+                }
             }
         } else {
             navbar.classList.remove('scrolled');
@@ -131,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
             youtube: "NVzRJA02070",
             links: [
                 { url: "https://github.com/Mained606/SpaceShipLooting_VR", icon: "github", text: "GitHub" },
-                { url: "https://drive.google.com/file/d/1-kLGxgn0eo2nxvytOxzWS7SnPG50cNxC/view?usp=drive_link", icon: "download", text: "빌드 다운로드" }
+                { url: "https://drive.google.com/file/d/1-kLGxgn0eo2nxvytOxzWS7SnPG50cNxC/view?usp=drive_link", icon: "google-drive", text: "빌드 다운로드" }
             ],
             tech: ["XR Interaction Toolkit", "Oculus Integration", "상태 패턴", "커스텀 셰이더"],
             overview: "우주선을 배경으로 한 VR 잠입 액션 게임입니다. 플레이어는 우주선 내부를 탐험하며 총과 레이저 검을 활용해 퍼즐을 풀어 우주선을 탈취하고 보스를 처치하는 미션을 수행합니다. 팀장으로서 전체 시스템 설계 및 핵심 기능 구현을 주도하였고, 특히 VR 환경에 적합한 상호작용과 최적화된 사용자 경험 제공에 집중하였습니다.",
@@ -238,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
             youtube: "oQkfw0fAKwE",
             links: [
                 { url: "https://github.com/Mained606/DsProject", icon: "github", text: "GitHub" },
-                { url: "https://drive.google.com/file/d/1ct5vo1cip51D-wZ6a6jS3Q4hZQguwTWb/view?usp=drive_link", icon: "download", text: "빌드 다운로드" }
+                { url: "https://drive.google.com/file/d/1ct5vo1cip51D-wZ6a6jS3Q4hZQguwTWb/view?usp=drive_link", icon: "google-drive", text: "빌드 다운로드" }
             ],
             tech: ["상태 패턴", "옵저버 패턴", "싱글톤 패턴"],
             overview: "Destiny Savior는 판타지 세계관의 3인칭 액션 RPG 게임입니다. 플레이어는 검과 완드를 통해 마법과 같은 스킬을 사용하여 몬스터들과 전투를 벌이고, 드래곤을 동료로 삼아 같이 성장해나가는 여정을 경험합니다. 코어 시스템 개발자로서 게임의 기반이 되는 매니저 시스템과 상태 관리, 전투 시스템 등을 구현했습니다.",
@@ -331,41 +344,100 @@ document.addEventListener('DOMContentLoaded', function() {
         binglerun: {
             title: "빙글런 펫즈",
             type: "하이브리드 러닝 게임",
-            period: "2023.07.01 ~ 2023.08.31 (8주)",
-            youtube: "dQw4w9WgXcQ",
+            period: "2025.05.01 ~ 진행중",
+            teamSize: "4명 (팀장)",
+            environment: {
+                development: "Unity 6 2D, C#",
+                build: "Android APK"
+            },
+            youtube: "",
             links: [
-                { url: "https://github.com/Mained606/BingleRunPets", icon: "github", text: "GitHub" }
+                { url: "https://github.com/JWS-SOFT/Bingglerun-Pets", icon: "github", text: "GitHub" }
             ],
-            tech: ["Unity 2022.3 URP", "C#", "Firebase", "Google Play Services", "AdMob"],
-            overview: "귀여운 펫을 수집하고 육성하며 달리는 하이브리드 러닝 게임입니다. 실시간 멀티플레이와 소셜 기능을 통해 다른 플레이어들과 경쟁하고 협력할 수 있습니다. 클라이언트 개발자로서 게임의 핵심 시스템과 소셜 기능을 구현했습니다.",
-            details: [
+            tech: ["상태 패턴", "FireBase Consol (Realtime DB, Auth)"],
+            overview: "빙글런 펫즈는 무한의 계단과 쿠키런의 게임플레이 메커니즘을 결합한 독특한 러닝 게임입니다. 플레이어는 나선형 계단을 따라 상승하면서 장애물을 피하고 아이템을 수집하며, 다양한 펫과 함께 끝없는 모험을 즐길 수 있습니다. 수직적 이동과 수평적 러닝의 조화로운 결합을 통해 새로운 게임플레이 경험을 제공합니다.",
+            responsibilities: [
                 {
-                    title: "게임플레이 시스템",
+                    title: "Firebase 인증 시스템 구현",
                     points: [
-                        "프로시저럴 레벨 생성 시스템 구현",
-                        "펫 수집 및 육성 시스템 개발",
-                        "실시간 멀티플레이 레이스 모드 구현",
-                        "일일 미션 및 업적 시스템 구현"
+                        "이메일/비밀번호 회원가입 및 로그인 시스템 개발",
+                        "게스트 로그인 기능 구현",
+                        "구글 로그인 연동 시스템 구축",
+                        "계정 삭제 및 데이터 관리 기능 개발"
                     ]
                 },
                 {
-                    title: "백엔드 연동",
+                    title: "실시간 데이터베이스 구현",
                     points: [
-                        "Firebase를 활용한 유저 데이터 관리",
-                        "실시간 랭킹 시스템 구현",
-                        "친구 초대 및 선물 시스템 개발",
-                        "푸시 알림 시스템 구현"
+                        "Firebase Realtime Database 연동 및 구조 설계",
+                        "플레이어 데이터 저장 및 동기화 시스템 개발",
+                        "리더보드 시스템 구현",
+                        "친구 추가 및 요청, 친구목록 같은 친구 시스템 구현",
+                        "스테이지 정보를 불러와 스테이지 셀렉트 씬에 연동",
+                        "데이터 백업 및 복구 기능 구현"
                     ]
                 },
                 {
-                    title: "수익화 시스템",
+                    title: "계정 관리 시스템 개발",
                     points: [
-                        "인앱 결제 시스템 구현",
-                        "리워드 광고 시스템 연동",
-                        "일일 보상 및 출석 체크 시스템 개발"
+                        "자동 로그인 및 세션 관리 기능 구현",
+                        "계정 상태 모니터링 및 에러 처리",
+                        "사용자 프로필 관리 시스템 개발",
+                        "보안 및 데이터 검증 로직 구현"
+                    ]
+                },
+                {
+                    title: "씬 전환 시스템 구현",
+                    points: [
+                        "타이틀씬 → 로비 → 스테이지 셀렉트 → 인게임 → 로비 연결",
+                        "각 연결 과정에서 상태 전환 시스템을 사용하여 매니저 시스템 컨트롤"
                     ]
                 }
-            ]
+            ],
+            challenges: [
+                {
+                    title: "Firebase 데이터 동기화 문제",
+                    problem: "처음 도입해본 DB 기능으로 인해 관리자가 DB에서 계정 삭제시 인게임 오류 발생",
+                    solution: "ReloadAsync()를 통한 토큰 갱신 시스템 구현, 사용자 정보 갱신 후 계정 유효성 검증 로직 추가, 계정 삭제 시 DB 데이터도 함께 정리하는 로직 구현",
+                    result: "관리자의 DB 조작에도 안정적인 게임 플레이 가능, 데이터 정합성 확보"
+                },
+                {
+                    title: "Firebase SDK 설정 문제",
+                    problem: "처음 사용하는 Firebase SDK의 복잡한 설정으로 인한 빌드 오류",
+                    solution: "Player Settings에 FIREBASE_AUTH, FIREBASE_DATABASE 등의 컴파일 심볼 추가, FirebaseDefineSymbols 클래스를 통한 자동화된 SDK 설정 시스템 구현, 플랫폼별 Firebase 플러그인 설정 최적화",
+                    result: "안정적인 Firebase 기능 사용 및 크로스 플랫폼 빌드 가능"
+                }
+            ],
+            leadership: {
+                teamwork: [
+                    "Firebase 서비스의 실제 구현 경험 획득",
+                    "실시간 데이터베이스 설계 및 능력 향상",
+                    "보안 및 인증 시스템 구현 노하우 습득"
+                ],
+                leadership: [
+                    "체계적인 데이터베이스 구조 설계 능력 향상",
+                    "사용자 데이터 관리 및 보안 관련 지식 습득",
+                    "클라우드 서비스 활용 능력 강화"
+                ]
+            },
+            outcomes: {
+                technical: [
+                    "Firebase 인증 및 데이터베이스 시스템 성공적 구현",
+                    "안정적인 실시간 데이터 동기화 시스템 구축",
+                    "효율적인 상태 관리 시스템 설계"
+                ],
+                soft: [
+                    "체계적인 프로젝트 관리 경험",
+                    "효율적인 팀 커뮤니케이션 체계 구축",
+                    "Git을 통한 버전 관리 경험"
+                ],
+                process: [
+                    "Firebase 서비스 활용 능력 향상",
+                    "실시간 데이터베이스 구조 설계 경험",
+                    "보안 및 인증 시스템 구현 노하우 습득"
+                ]
+            },
+            conclusion: "빙글런 펫즈 프로젝트를 통해 Firebase를 활용한 백엔드 시스템 구현과 실시간 데이터베이스 관리 경험을 쌓았습니다. 특히 사용자 인증과 데이터 동기화와 같은 핵심적인 기능을 성공적으로 구현하며, 모바일 게임 개발에서 중요한 백엔드 통합 능력을 키웠습니다."
         }
     };
 
