@@ -501,6 +501,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // 모달 내용 설정 전에 스크롤 위치 초기화
+        modalBody.scrollTop = 0;
+        modalContent.scrollTop = 0;
+        modal.scrollTop = 0;
+
         modalBody.innerHTML = `
             <div class="project-header">
                 <h3>${project.title}</h3>
@@ -616,9 +621,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // 모달 닫기 함수
     function closeModalHandler() {
         modal.classList.remove('active');
+        
+        // 모달 닫을 때 스크롤 초기화
+        modalBody.scrollTop = 0;
+        modalContent.scrollTop = 0;
+        modal.scrollTop = 0;
+        
         setTimeout(() => {
             modal.style.display = 'none';
             document.body.style.overflow = '';
+            
+            // 모달이 완전히 닫힌 후에도 스크롤 초기화
+            modalBody.scrollTop = 0;
+            modalContent.scrollTop = 0;
+            modal.scrollTop = 0;
         }, 300);
     }
 
@@ -627,6 +643,12 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', () => {
             const projectId = item.getAttribute('data-project');
             console.log('Portfolio item clicked:', projectId);
+            
+            // 모달 열기 전 스크롤 초기화
+            modalBody.scrollTop = 0;
+            modalContent.scrollTop = 0;
+            modal.scrollTop = 0;
+            
             openModal(projectId);
         });
     });
@@ -634,10 +656,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // 자세히 보기 버튼 클릭 이벤트
     document.querySelectorAll('.view-project').forEach(button => {
         button.addEventListener('click', (e) => {
-            e.stopPropagation(); // 이벤트 버블링 방지
-            const projectId = e.target.closest('.portfolio-item').getAttribute('data-project');
-            console.log('View project button clicked:', projectId);
-            openModal(projectId);
+            e.preventDefault();
+            const projectId = e.target.closest('.portfolio-item').dataset.project;
+            const modal = document.querySelector('.project-modal');
+            const modalContent = modal.querySelector('.modal-content');
+            
+            // 모달 열기 전 스크롤 초기화
+            modal.scrollTop = 0;
+            modalContent.scrollTop = 0;
+            
+            // 모달 내용 설정
+            modalContent.innerHTML = getProjectContent(projectId);
+            
+            // 모달 표시
+            modal.style.display = 'block';
+            
+            // 모달 닫기 이벤트 설정
+            modal.querySelector('.close-modal').addEventListener('click', () => {
+                modal.style.display = 'none';
+                // 모달 닫을 때 스크롤 초기화
+                modal.scrollTop = 0;
+                modalContent.scrollTop = 0;
+            });
         });
     });
 
@@ -698,6 +738,10 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
     function openCoverLetterModal() {
         const modal = document.querySelector('.project-modal');
         const modalBody = modal.querySelector('.modal-body');
+        
+        // 모달 내용 설정 전에 스크롤 위치 초기화
+        modalBody.scrollTop = 0;
+        modal.querySelector('.modal-content').scrollTop = 0;
         
         modalBody.innerHTML = `
             <div class="project-header">
