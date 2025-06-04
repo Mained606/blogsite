@@ -22,7 +22,7 @@
 [data-theme="dark"] {
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
-    --card-bg: #2d2d2d;
+    --card-bg: #1a1a1a;
     --border-color: #404040;
     --modal-bg: #2d2d2d;
     --modal-overlay: rgba(0, 0, 0, 0.95);
@@ -38,7 +38,7 @@
     :root:not([data-theme="light"]) {
         --bg-color: #1a1a1a;
         --text-color: #ffffff;
-        --card-bg: #2d2d2d;
+        --card-bg: #1a1a1a;
         --border-color: #404040;
         --modal-bg: #2d2d2d;
         --modal-overlay: rgba(0, 0, 0, 0.95);
@@ -103,7 +103,7 @@ body {
 
 /* 히어로 섹션 */
 .hero-section {
-    height: 100vh;
+    height: 70vh;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -133,7 +133,7 @@ body {
 
 /* 섹션 공통 스타일 */
 section {
-    padding: 100px 0;
+    padding: 70px 0;
     position: relative;
 }
 
@@ -949,6 +949,7 @@ section h2:after {
 #contact {
     background-color: #333;
     color: #fff;
+    padding: 50px 0;
 }
 
 /* 섹션 제목 스타일 */
@@ -1400,6 +1401,8 @@ section h2:after {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    padding: 1.5rem;
+    border-radius: 10px;
 }
 
 .modal-content {
@@ -1436,4 +1439,9 @@ section h2:after {
 .about-content .expertise,
 .about-content .philosophy {
     border-bottom: 1px solid var(--border-color);
+}
+
+/* 섹션 배경색 수정 */
+section.bg-light {
+    background-color: var(--bg-color) !important;
 } 
