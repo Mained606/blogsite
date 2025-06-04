@@ -791,9 +791,10 @@ section h2:after {
 /* 리더십 및 성과 섹션 */
 .leadership-group,
 .outcomes-group {
-    background: #fff;
+    background-color: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
+    border: 1px solid var(--border-color);
 }
 
 .leadership-group ul,
@@ -807,6 +808,7 @@ section h2:after {
     margin-bottom: 8px;
     position: relative;
     padding-left: 20px;
+    color: var(--text-color);
 }
 
 .leadership-group li:before,
@@ -819,10 +821,11 @@ section h2:after {
 
 /* 결론 */
 .conclusion {
-    background: #f8f9fa;
+    background-color: var(--card-bg);
     padding: 25px;
     border-radius: 10px;
     margin-top: 30px;
+    border: 1px solid var(--border-color);
 }
 
 .conclusion p {
