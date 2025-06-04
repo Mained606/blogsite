@@ -53,6 +53,58 @@ class TypeWriter {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded');
 
+    // 다크모드 설정
+    const themeToggle = document.querySelector('.theme-toggle');
+    const moonIcon = themeToggle.querySelector('i');
+    
+    // 저장된 테마 불러오기
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme === 'dark');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeIcon(true);
+    }
+    
+    // 테마 토글 이벤트
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme === 'dark');
+    });
+    
+    // 아이콘 업데이트 함수
+    function updateThemeIcon(isDark) {
+        moonIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    // 최상단 이동 버튼 생성 및 추가
+    const scrollTopButton = document.createElement('button');
+    scrollTopButton.className = 'scroll-top-button';
+    scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(scrollTopButton);
+
+    // 스크롤 위치에 따라 버튼 표시/숨김
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollTopButton.classList.add('show');
+        } else {
+            scrollTopButton.classList.remove('show');
+        }
+    });
+
+    // 최상단 이동 버튼 클릭 이벤트
+    scrollTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
     // 스크롤 시 네비게이션 바 스타일 변경
     const navbar = document.querySelector('.navbar');
     let lastScrollTop = 0;

@@ -5,12 +5,58 @@
     --dark-color: #343a40;
     --light-color: #f8f9fa;
     --accent-color: #ff4081;
+    --bg-color: #ffffff;
+    --text-color: #343a40;
+    --card-bg: #ffffff;
+    --border-color: #eee;
+    --modal-bg: #ffffff;
+    --modal-overlay: rgba(0, 0, 0, 0.9);
+    --card-text: #343a40;
+    --section-title: #343a40;
+    --info-text: #343a40;
+    --skill-text: #343a40;
+    --card-title: #343a40;
+}
+
+/* 다크모드 스타일 */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --modal-bg: #2d2d2d;
+    --modal-overlay: rgba(0, 0, 0, 0.95);
+    --card-text: #ffffff;
+    --section-title: #ffffff;
+    --info-text: #ffffff;
+    --skill-text: #ffffff;
+    --card-title: #ff4081;
+}
+
+/* 시스템 다크모드 감지 */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-color: #1a1a1a;
+        --text-color: #ffffff;
+        --card-bg: #2d2d2d;
+        --border-color: #404040;
+        --modal-bg: #2d2d2d;
+        --modal-overlay: rgba(0, 0, 0, 0.95);
+        --card-text: #ffffff;
+        --section-title: #ffffff;
+        --info-text: #ffffff;
+        --skill-text: #ffffff;
+        --card-title: #ff4081;
+    }
 }
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 네비게이션 바 */
@@ -281,12 +327,13 @@ section h2:after {
 
 /* 게임 성과 카드 */
 .achievement-card {
-    background: white;
+    background-color: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     height: 100%;
+    border: 1px solid var(--border-color);
 }
 
 .achievement-card:hover {
@@ -294,23 +341,25 @@ section h2:after {
 }
 
 .achievement-card h4 {
-    color: var(--accent-color);
+    color: var(--card-title);
     margin-bottom: 15px;
 }
 
 .achievement-card li {
     margin-bottom: 10px;
-    color: var(--dark-color);
+    color: var(--card-text);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
 
 /* 기술 스택 카드 스타일 */
 .skill-card {
-    background: white;
+    background-color: var(--card-bg);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     height: 100%;
     transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .skill-card:hover {
@@ -319,7 +368,7 @@ section h2:after {
 }
 
 .skill-card h4 {
-    color: var(--accent-color);
+    color: var(--card-title);
     font-size: 1.5em;
     font-weight: 600;
     margin-bottom: 20px;
@@ -330,9 +379,10 @@ section h2:after {
 .skill-card ul li {
     margin-bottom: 15px;
     font-size: 1.1em;
-    color: var(--dark-color);
+    color: var(--card-text);
     display: flex;
     align-items: center;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
 
 .skill-card ul li i {
@@ -411,7 +461,7 @@ section h2:after {
 }
 
 .about-content h3 {
-    color: var(--dark-color);
+    color: var(--section-title);
     font-weight: 700;
     margin-bottom: 1.5rem;
     position: relative;
@@ -437,7 +487,7 @@ section h2:after {
 
 .about-content .lead {
     font-size: 1.1em;
-    color: var(--dark-color);
+    color: var(--card-text);
     line-height: 1.8;
 }
 
@@ -466,7 +516,7 @@ section h2:after {
 
 .about-content .philosophy p {
     line-height: 1.8;
-    color: var(--dark-color);
+    color: var(--card-text);
 }
 
 /* 프로젝트 섹션 스타일 */
@@ -630,7 +680,7 @@ section h2:after {
 .project-header h3 {
     font-size: 2.5em;
     margin-bottom: 10px;
-    color: var(--dark-color);
+    color: var(--section-title);
 }
 
 .project-type {
@@ -683,7 +733,7 @@ section h2:after {
 
 /* 섹션 스타일 */
 .modal-body h4 {
-    color: var(--dark-color);
+    color: var(--section-title);
     font-size: 1.5em;
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -721,14 +771,14 @@ section h2:after {
 
 /* 문제 해결 카드 */
 .challenge-card {
-    background: #f8f9fa;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .challenge-card h5 {
-    color: var(--dark-color);
+    color: var(--section-title);
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
@@ -778,7 +828,7 @@ section h2:after {
 .conclusion p {
     font-size: 1.1em;
     line-height: 1.8;
-    color: var(--dark-color);
+    color: var(--card-text);
     margin: 0;
 }
 
@@ -905,7 +955,7 @@ section h2:after {
 .section-title {
     font-size: 1.8em;
     font-weight: 600;
-    color: var(--dark-color);
+    color: var(--section-title);
     margin-bottom: 30px;
     padding-bottom: 10px;
     position: relative;
@@ -929,7 +979,7 @@ section h2:after {
 .project-overview h4 {
     font-size: 1.8em;
     font-weight: 600;
-    color: var(--dark-color);
+    color: var(--section-title);
     margin-bottom: 30px;
     padding-bottom: 10px;
     position: relative;
@@ -948,14 +998,14 @@ section h2:after {
 .project-overview p {
     font-size: 1.1em;
     line-height: 1.8;
-    color: var(--dark-color);
+    color: var(--text-color);
 }
 
 /* 주요 담당 업무 */
 .responsibilities h4 {
     font-size: 1.8em;
     font-weight: 600;
-    color: var(--dark-color);
+    color: var(--section-title);
     margin-bottom: 30px;
     padding-bottom: 10px;
     position: relative;
@@ -997,7 +1047,7 @@ section h2:after {
 .cover-letter-section p {
     font-size: 1.1em;
     line-height: 1.8;
-    color: var(--dark-color);
+    color: var(--text-color);
     white-space: pre-wrap;
 }
 
@@ -1077,7 +1127,7 @@ section h2:after {
 }
 
 .resume-modal .modal-body {
-    color: var(--dark-color);
+    color: var(--text-color);
 }
 
 .resume-content {
@@ -1120,7 +1170,7 @@ section h2:after {
 .resume-section ul li {
     margin-bottom: 10px;
     line-height: 1.6;
-    color: var(--dark-color);
+    color: var(--text-color);
 }
 
 .resume-section .skill-list li {
@@ -1137,7 +1187,7 @@ section h2:after {
 }
 
 .project-item {
-    background: #f8f9fa;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -1173,25 +1223,22 @@ section h2:after {
 }
 
 .achievement-item {
-    background: #f8f9fa;
+    background-color: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
+    border: 1px solid var(--border-color);
 }
 
 .achievement-item h5 {
-    color: var(--accent-color);
+    color: var(--card-title);
     margin-bottom: 15px;
-}
-
-.achievement-item ul {
-    list-style: none;
-    padding-left: 0;
 }
 
 .achievement-item ul li {
     margin-bottom: 8px;
     padding-left: 20px;
     position: relative;
+    color: var(--card-text);
 }
 
 .achievement-item ul li:before {
@@ -1284,4 +1331,109 @@ section h2:after {
 .static-text .fa-unity {
     font-size: 1em;
     vertical-align: middle;
+}
+
+/* 최상단 이동 버튼 스타일 */
+.scroll-top-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.scroll-top-button:hover {
+    background-color: #ff1f5a;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-top-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 모바일 화면에서의 위치 조정 */
+@media (max-width: 768px) {
+    .scroll-top-button {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* 다크모드 토글 버튼 스타일 */
+.theme-toggle {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--accent-color);
+}
+
+/* 기존 스타일 수정 */
+.about-content, 
+.skill-card, 
+.achievement-card,
+.project-item,
+.challenge-card,
+.info-group {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--modal-bg);
+    color: var(--text-color);
+}
+
+.project-modal {
+    background-color: var(--modal-overlay);
+}
+
+.resume-modal .modal-content {
+    background-color: var(--modal-bg);
+    color: var(--text-color);
+}
+
+.close-modal {
+    color: var(--text-color);
+}
+
+.project-header {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.cover-letter-section {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.resume-section {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-content .background,
+.about-content .expertise,
+.about-content .philosophy {
+    border-bottom: 1px solid var(--border-color);
 } 
