@@ -277,6 +277,46 @@ section h2:after {
     color: var(--dark-color);
 }
 
+/* 기술 스택 카드 스타일 */
+.skill-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.skill-card h4 {
+    color: var(--accent-color);
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.skill-card ul li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+}
+
+.skill-card ul li i {
+    color: var(--accent-color);
+    margin-right: 15px;
+    font-size: 1.2em;
+    width: 25px;
+    text-align: center;
+}
+
 /* 연락처 정보 */
 .contact-info {
     background: transparent;
@@ -903,4 +943,253 @@ section h2:after {
     width: 100%;
     height: 2px;
     background-color: #ff4081;
+}
+
+/* 자기소개서 스타일 */
+.cover-letter-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cover-letter-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.cover-letter-section:last-child {
+    border-bottom: none;
+}
+
+.cover-letter-section h4 {
+    color: var(--accent-color);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.cover-letter-section p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--dark-color);
+    white-space: pre-wrap;
+}
+
+.cover-letter-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px 0;
+}
+
+.cover-letter-btn:hover {
+    background-color: #ff1f5a;
+    transform: translateY(-2px);
+}
+
+/* 이력서 버튼 스타일 */
+.resume-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+    background-color: #ff1f5a;
+    transform: translateY(-2px);
+}
+
+/* 이력서 모달 스타일 */
+.resume-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.resume-modal .modal-content {
+    background-color: white;
+    max-width: 900px;
+    margin: 30px auto;
+    border-radius: 15px;
+    position: relative;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    opacity: 1;
+    transform: none;
+}
+
+.resume-modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.resume-modal .close-modal:hover {
+    color: var(--accent-color);
+}
+
+.resume-modal .modal-body {
+    color: var(--dark-color);
+}
+
+.resume-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.resume-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.resume-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.resume-section h4 {
+    color: var(--accent-color);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.resume-section h5 {
+    color: var(--dark-color);
+    font-size: 1.2em;
+    margin: 20px 0 15px;
+    font-weight: 600;
+}
+
+.resume-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.resume-section ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+.resume-section .skill-list li {
+    margin-bottom: 15px;
+}
+
+.resume-section a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.resume-section a:hover {
+    text-decoration: underline;
+}
+
+.project-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.project-item ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.project-item ul li {
+    position: relative;
+}
+
+.project-item ul li:before {
+    content: "•";
+    position: absolute;
+    left: -15px;
+    color: var(--accent-color);
+}
+
+.highlight-text {
+    color: var(--accent-color);
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.game-achievements {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.achievement-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.achievement-item h5 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.achievement-item ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.achievement-item ul li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.achievement-item ul li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .resume-modal .modal-content {
+        margin: 15px;
+        padding: 20px;
+    }
+    
+    .resume-section {
+        padding: 15px;
+    }
+    
+    .game-achievements {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-item {
+        padding: 15px;
+    }
 } 

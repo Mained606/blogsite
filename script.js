@@ -614,4 +614,111 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModalHandler();
         }
     });
+
+    // 자기소개서 데이터
+    const coverLetterData = {
+        sections: [
+            {
+                title: "1. 지원 동기",
+                content: `어릴 적부터 게임은 제 삶의 중심이었습니다. 특히 RPG 장르에 깊은 애정을 갖고, 로스트아크, 리니지 이터널(CBT), 디지몬 RPG 등에서 랭킹 상위권을 달성하며 게임 메커니즘을 분석하고 경쟁의 즐거움을 체험해왔습니다. 단순한 플레이를 넘어서 "이 데미지 공식은 어떻게 구성될까?", "버그는 어떤 조건에서 발생할까?"와 같은 기술적 호기심을 꾸준히 가져왔으며, 실제로 신규 아이템의 데미지 오류를 제보하고 공식 구조를 분석한 경험도 있습니다. 학생일 당시 게임을 즐기며 C의 기초 문법에 대해 궁금증이 생기게 되었고 콘솔 프로그램을 이용하여 데미지 적용 계산기와 같은 툴 비슷한 프로그램을 만들어 본 경험이 있습니다. 이러한 경험은 시스템 설계와 디버깅 역량의 기반이 되었습니다.
+
+게임을 단순한 소비가 아닌 창조의 대상으로 바라보게 되며 자라왔고, 이후 커리어 전환을 결정하게 되었을 때 게임 개발자로서 성장하고자 마음먹었고, 게임 개발 철학과 기술 중심의 프로젝트 운영 방식에 큰 매력을 느껴 지원하게 되었습니다.`
+            },
+            {
+                title: "2. 전공 및 커리어 전환 배경",
+                content: `중학생 시절부터 음악을 전공하며 일렉기타 연주에 모든 열정을 쏟아부었습니다. 밴드부 리더로서 팀을 이끌며 협업과 일정 조율 능력을 키웠고, 공연을 준비하는 과정은 제게 큰 보람이자 삶의 중심이었습니다. 하지만 손 부상으로 인해 정교한 연주가 어려워진 이후, 코로나 시기까지 겹치게 되어 마치 모든 것을 잃은 듯한 상실감을 겪었습니다.
+
+그 시기에도 저는 꾸준히 온라인 게임과 콘솔 게임을 즐기고 있었고, "이 게임은 어떻게 만들었을까?", "이 시스템을 만든 사람은 정말 천재 같다"는 감탄과 동경을 자주 느꼈습니다. 연주를 포기해야 했던 절망 속에서 유일하게 저를 위로해준 것도 결국 게임이었습니다. 게임은 단순한 오락을 넘어, 제게 다시 꿈을 꾸게 하고 삶의 의지를 되찾게 해준 존재였습니다.
+
+그때 결심했습니다. 나도 누군가에게 위로와 희망을 줄 수 있는 게임을 만들자고. 그렇게 게임 클라이언트 개발자로의 전향을 결심했고, 이를 실현하기 위해 MBC 아카데미 부트캠프에 참여하여 체계적인 커리큘럼을 통해 Unity 개발 역량을 빠르게 축적해나갔습니다.`
+            },
+            {
+                title: "3. 프로젝트 경험 및 주요 역량",
+                content: `부트캠프에서는 VR FPS와 PC RPG 팀 프로젝트를 통해 클라이언트 개발의 전반을 경험했습니다. 팀장 및 부 팀장으로서 상태 시스템이나 전투와 관련된 시스템들 개발하며 팀원들의 작업에 있어서 막히는 부분을 도와주고 버그 상황에서 해결 방안을 제시하고 함께 해결하려 노력했습니다.
+
+GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관리와 실시간 커뮤니케이션을 수행했습니다. 특히 Notion을 활용한 업무 일지 및 회의록 기록을 통해 실무 중심의 문서화 역량도 함께 강화했습니다.
+
+또한, 수료 직후에는 동료의 창업 프로젝트에 합류하여 약 한 달간 하이브리드 캐주얼 게임을 리딩하며 Firebase 연동을 통한 로그인, 랭킹, 친구 기능을 구현했습니다. 데이터 설계 경험도 함께 쌓았고, 실무 환경에 적응하여 전반을 리딩한 소중한 경험이 되었습니다. 비록 정식 고용 구조 문제로 프로젝트는 종료되었지만, 스타트업 환경에서의 실전 경험은 큰 자산이 되었습니다.`
+            },
+            {
+                title: "4. 협업 및 문제 해결 역량",
+                content: `프로젝트 진행 중 반복되는 버그나 예외 상황에 대해 원인을 분석하고, 수치를 검증하며 개발 품질을 높이는 역할을 주도적으로 수행했습니다. 단순 구현을 넘어서 시스템적 사고와 문제 해결 능력을 키웠으며, 팀 내 커뮤니케이션을 통한 문제 공유와 해결 방식에도 적극 참여했습니다. 이러한 경험은 실무에서도 빠르게 적응하고 팀에 기여할 수 있다는 자신감으로 이어졌습니다.`
+            },
+            {
+                title: "5. 포부",
+                content: `저는 유저의 시선에서 게임을 바라보며, 시스템적 관점에서 개선 방향을 제시할 수 있는 개발자입니다. 게임의 완성도를 높이고 유저에게 긍정적인 경험을 전달하는 데 실질적으로 기여하고자 합니다. 팀과 함께 성장하고, Unity 클라이언트 개발자로서 귀사에 가치 있는 구성원이 되겠습니다.`
+            }
+        ]
+    };
+
+    // 자기소개서 모달 열기 함수
+    function openCoverLetterModal() {
+        const modal = document.querySelector('.project-modal');
+        const modalBody = modal.querySelector('.modal-body');
+        
+        modalBody.innerHTML = `
+            <div class="project-header">
+                <h3>자기소개서</h3>
+            </div>
+            
+            <div class="cover-letter-content">
+                ${coverLetterData.sections.map(section => `
+                    <div class="cover-letter-section">
+                        <h4>${section.title}</h4>
+                        <p>${section.content}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            modal.classList.add('active');
+        }, 10);
+    }
+
+    // 자기소개서 버튼 이벤트 리스너 추가
+    const coverLetterBtn = document.querySelector('.cover-letter-btn');
+    if (coverLetterBtn) {
+        coverLetterBtn.addEventListener('click', openCoverLetterModal);
+    }
+
+    // 이력서 모달 기능
+    const resumeModal = document.querySelector('.resume-modal');
+    const resumeBtn = document.querySelector('.resume-btn');
+    const resumeCloseBtn = resumeModal.querySelector('.close-modal');
+
+    resumeBtn.addEventListener('click', () => {
+        resumeModal.style.display = 'block';
+        resumeModal.querySelector('.modal-content').style.opacity = '1';
+        resumeModal.querySelector('.modal-content').style.transform = 'translateY(0)';
+        document.body.style.overflow = 'hidden';
+    });
+
+    function closeResumeModal() {
+        resumeModal.querySelector('.modal-content').style.opacity = '0';
+        resumeModal.querySelector('.modal-content').style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            resumeModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+
+    resumeCloseBtn.addEventListener('click', closeResumeModal);
+
+    // 모달 외부 클릭 시 닫기
+    window.addEventListener('click', (e) => {
+        if (e.target === resumeModal) {
+            closeResumeModal();
+        }
+    });
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && resumeModal.style.display === 'block') {
+            closeResumeModal();
+        }
+    });
 }); 
