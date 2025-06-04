@@ -10,16 +10,19 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* 네비게이션 바 */
 .navbar {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: background-color 0.3s ease;
+    padding: 1rem 0;
 }
 
 .navbar.scrolled {
     background-color: rgba(33, 37, 41, 0.95) !important;
+    padding: 0.5rem 0;
 }
 
 /* 히어로 섹션 */
@@ -30,67 +33,95 @@ body {
     background-position: center;
     color: white;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section .display-4 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.hero-section .lead {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .hero-section .social-links a {
     transition: transform 0.3s ease;
-}
-
-.hero-section .social-links a:hover {
-    transform: translateY(-5px);
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
 }
 
 /* 섹션 공통 스타일 */
 section {
-    padding-top: 80px;
-}
-
-/* 스킬 카드 */
-.skill-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    height: 100%;
-}
-
-.skill-card:hover {
-    transform: translateY(-5px);
-}
-
-.skill-card h4 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.skill-card li {
-    margin-bottom: 10px;
-}
-
-.skill-card i {
-    margin-right: 10px;
-    color: var(--accent-color);
-}
-
-/* 포트폴리오 아이템 */
-.portfolio-item {
-    margin-bottom: 30px;
+    padding: 100px 0;
     position: relative;
-    overflow: hidden;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+section h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* 이미지 관련 스타일 개선 */
+.img-placeholder {
+    background-color: #f8f9fa;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 1.2rem;
 }
 
 .portfolio-item img {
     width: 100%;
-    height: 250px;
+    height: 400px;
     object-fit: cover;
+    border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
-.portfolio-item:hover img {
-    transform: scale(1.1);
+.about-section img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* 포트폴리오 아이템 개선 */
+.portfolio-item {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 300px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 .portfolio-overlay {
@@ -99,12 +130,15 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    padding: 40px;
+    overflow-y: auto;
 }
 
 .portfolio-item:hover .portfolio-overlay {
@@ -112,13 +146,107 @@ section {
 }
 
 .portfolio-content {
-    color: white;
-    text-align: center;
-    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .portfolio-content h3 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.project-type {
+    font-size: 1.3em;
+}
+
+.project-tech .badge {
+    font-size: 1em;
+    padding: 10px 15px;
+}
+
+.project-period {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: rgba(255,255,255,0.8);
+}
+
+.project-overview {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+    text-align: left;
+}
+
+.project-details {
+    text-align: left;
+    margin: 15px 0;
+}
+
+.project-details h5 {
+    color: var(--accent-color);
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.project-details h6 {
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
     margin-bottom: 10px;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+.project-highlights {
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.project-highlights li {
+    margin-bottom: 8px;
+    font-size: 1em;
+    position: relative;
+    color: rgba(255,255,255,0.8);
+    padding-left: 15px;
+}
+
+.project-highlights li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.project-links .btn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+    margin: 5px;
+    border-color: rgba(255,255,255,0.5);
+}
+
+.project-links .btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.project-links .btn i {
+    margin-right: 5px;
+}
+
+/* 스크롤바 스타일링 */
+.portfolio-overlay::-webkit-scrollbar {
+    width: 6px;
+}
+
+.portfolio-overlay::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+.portfolio-overlay::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
 }
 
 /* 게임 성과 카드 */
@@ -147,28 +275,38 @@ section {
 
 /* 연락처 정보 */
 .contact-info {
-    background: white;
+    background: transparent;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: #fff;
 }
 
 .contact-info p {
     margin-bottom: 15px;
     font-size: 1.1em;
+    color: #fff;
 }
 
 .contact-info i {
     margin-right: 10px;
-    color: var(--accent-color);
+    color: #fff;
 }
 
-.social-links a {
-    transition: transform 0.3s ease;
+.contact-info .social-links a {
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    border-width: 2px;
 }
 
-.social-links a:hover {
+.contact-info .social-links a:hover {
     transform: translateY(-3px);
+    background-color: var(--dark-color);
+    color: white;
+}
+
+.contact-info .social-links i {
+    margin-right: 8px;
 }
 
 /* 연락처 폼 */
@@ -194,61 +332,74 @@ section {
     pointer-events: auto;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .hero-section {
-        height: 60vh;
-    }
-    
-    section {
-        padding-top: 60px;
-    }
-    
-    .portfolio-item img {
-        height: 200px;
-    }
+/* 자기소개 섹션 스타일 */
+.about-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* 자기소개 섹션 스타일 */
+.about-content h3 {
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.about-content h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
 .about-content h4 {
     color: var(--accent-color);
-    margin-bottom: 15px;
-    font-size: 1.2em;
+    margin: 1.5rem 0 1rem;
+    font-size: 1.3em;
+    font-weight: 600;
 }
 
 .about-content .lead {
     font-size: 1.1em;
     color: var(--dark-color);
+    line-height: 1.8;
 }
 
 .about-content .background,
 .about-content .expertise,
 .about-content .philosophy {
-    padding: 15px 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .about-content .expertise li {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .about-content .expertise i {
     color: var(--accent-color);
-    margin-right: 10px;
+    margin-right: 1rem;
+    font-size: 1.2em;
+}
+
+.about-content .philosophy {
+    border-bottom: none;
+}
+
+.about-content .philosophy p {
+    line-height: 1.8;
+    color: var(--dark-color);
 }
 
 /* 프로젝트 섹션 스타일 */
-.portfolio-content {
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-.portfolio-content h3 {
-    margin-bottom: 10px;
-    font-size: 1.5em;
-}
-
 .project-type {
     color: var(--accent-color);
     font-weight: bold;
@@ -283,4 +434,469 @@ section {
     position: absolute;
     left: 0;
     color: var(--accent-color);
+}
+
+/* 포트폴리오 아이템 */
+.portfolio-item {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 300px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.img-placeholder {
+    height: 100%;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    border-radius: 10px;
+}
+
+.portfolio-preview {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 20px;
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-preview {
+    transform: translateY(0);
+}
+
+.portfolio-preview h3 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.portfolio-preview .project-type {
+    font-size: 1em;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.view-project {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.view-project:hover {
+    background-color: #ff1f5a;
+    transform: translateY(-2px);
+}
+
+/* 프로젝트 모달 */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    max-width: 1000px;
+    margin: 30px auto;
+    border-radius: 15px;
+    position: relative;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.project-modal.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.close-modal:hover {
+    color: var(--accent-color);
+}
+
+/* 프로젝트 헤더 */
+.project-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.project-header h3 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.project-type {
+    font-size: 1.2em;
+    color: var(--accent-color);
+}
+
+/* 프로젝트 정보 */
+.info-group {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-list li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.info-list strong {
+    color: var(--dark-color);
+    margin-right: 10px;
+}
+
+/* 기술 스택 */
+.tech-stack {
+    margin-bottom: 30px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-tag {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+/* 섹션 스타일 */
+.modal-body h4 {
+    color: var(--dark-color);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.modal-body h5 {
+    color: var(--accent-color);
+    font-size: 1.2em;
+    margin: 20px 0 15px;
+}
+
+/* 담당 업무 */
+.responsibility-group {
+    margin-bottom: 25px;
+}
+
+.responsibility-group ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.responsibility-group li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.responsibility-group li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* 문제 해결 카드 */
+.challenge-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.challenge-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.challenge-card p {
+    margin-bottom: 10px;
+}
+
+/* 리더십 및 성과 섹션 */
+.leadership-group,
+.outcomes-group {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.leadership-group ul,
+.outcomes-group ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.leadership-group li,
+.outcomes-group li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.leadership-group li:before,
+.outcomes-group li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* 결론 */
+.conclusion {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.conclusion p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--dark-color);
+    margin: 0;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .hero-section .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.2rem;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    section h2 {
+        font-size: 2rem;
+    }
+    
+    .portfolio-item {
+        height: 250px;
+    }
+    
+    .img-placeholder {
+        height: 300px;
+    }
+    
+    .portfolio-overlay {
+        padding: 20px;
+    }
+    
+    .portfolio-content h3 {
+        font-size: 2em;
+    }
+    
+    .project-type {
+        font-size: 1.1em;
+    }
+    
+    .project-tech .badge {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    .project-header h3 {
+        font-size: 2em;
+    }
+    
+    .info-list li {
+        font-size: 1em;
+    }
+    
+    .tech-tag {
+        font-size: 0.8em;
+    }
+    
+    .modal-body h4 {
+        font-size: 1.3em;
+    }
+    
+    .modal-body h5 {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section .display-4 {
+        font-size: 2rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1rem;
+    }
+    
+    .portfolio-item img {
+        height: 200px;
+    }
+    
+    .portfolio-preview h3 {
+        font-size: 1.2em;
+    }
+    
+    .portfolio-preview .project-type {
+        font-size: 0.9em;
+    }
+}
+
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    margin: 0 8px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.social-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-button i {
+    margin-right: 8px;
+}
+
+#contact {
+    background-color: #333;
+    color: #fff;
+}
+
+/* 섹션 제목 스타일 */
+.section-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff4081;
+}
+
+/* 프로젝트 요약 */
+.project-overview {
+    margin: 40px 0;
+}
+
+.project-overview h4 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.project-overview h4:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff4081;
+}
+
+.project-overview p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--dark-color);
+}
+
+/* 주요 담당 업무 */
+.responsibilities h4 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.responsibilities h4:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff4081;
 } 

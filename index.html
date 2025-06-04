@@ -63,16 +63,13 @@
     </section>
 
     <!-- 소개 섹션 -->
-    <section id="about" class="py-5">
+    <section id="about" class="py-5 about-section">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">자기소개</h2>
-            <div class="row">
-                <div class="col-md-6" data-aos="fade-right">
-                    <img src="profile-image.jpg" alt="프로필 이미지" class="img-fluid rounded">
-                </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <h3>Unity 게임 클라이언트 개발자</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up">
                     <div class="about-content">
+                        <h3 class="mb-4">Unity 게임 클라이언트 개발자</h3>
                         <p class="lead mb-4">어릴 적부터 게임은 제 삶의 중심이었습니다. 게임을 단순한 소비가 아닌 창조의 대상으로 바라보며, 이제는 게임 개발자로서 새로운 도전을 시작하고 있습니다.</p>
                         
                         <div class="background mb-4">
@@ -142,75 +139,55 @@
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">프로젝트</h2>
             <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up">
-                    <div class="portfolio-item">
-                        <img src="spaceship-looting.jpg" alt="SpaceShipLooting">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h3>SpaceShipLooting</h3>
-                                <p class="project-type">VR FPS 게임</p>
-                                <p class="project-period">2024.11.25 ~ 2024.12.31</p>
-                                <div class="project-details">
-                                    <p><strong>역할:</strong> 부 팀장 및 개발 팀장</p>
-                                    <ul class="project-highlights">
-                                        <li>VR 프로젝트 환경 구축 및 빌드</li>
-                                        <li>인터렉션 및 게임 시스템 구현</li>
-                                        <li>플레이어 시스템 구현</li>
-                                        <li>보스 AI 시스템 FSM 적용</li>
-                                    </ul>
-                                </div>
-                                <a href="#" class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#spaceshipModal">자세히 보기</a>
-                            </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="portfolio-item" data-project="spaceship">
+                        <div class="img-placeholder">
+                            <i class="fas fa-vr-cardboard fa-3x"></i>
+                        </div>
+                        <div class="portfolio-preview">
+                            <h3>SpaceShipLooting VR</h3>
+                            <p class="project-type">VR 잠입 액션 게임</p>
+                            <button class="btn btn-primary view-project">자세히 보기</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="portfolio-item">
-                        <img src="destiny-savior.jpg" alt="Destiny Savior">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h3>Destiny Savior</h3>
-                                <p class="project-type">RPG 게임</p>
-                                <p class="project-period">2025.01.06 ~ 2025.04.23</p>
-                                <div class="project-details">
-                                    <p><strong>역할:</strong> 부 팀장 및 개발 팀장</p>
-                                    <ul class="project-highlights">
-                                        <li>게임 상태 및 매니저 시스템 설계</li>
-                                        <li>전투, 캐릭터, 펫 시스템 구현</li>
-                                        <li>FSM 기반 AI 시스템 개발</li>
-                                        <li>세이브/로드 시스템 구축</li>
-                                    </ul>
-                                </div>
-                                <a href="#" class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#destinyModal">자세히 보기</a>
-                            </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-item" data-project="destiny">
+                        <div class="img-placeholder">
+                            <i class="fas fa-gamepad fa-3x"></i>
+                        </div>
+                        <div class="portfolio-preview">
+                            <h3>Destiny Savior</h3>
+                            <p class="project-type">3인칭 액션 RPG 게임</p>
+                            <button class="btn btn-primary view-project">자세히 보기</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="portfolio-item">
-                        <img src="binglerun-pets.jpg" alt="Binglerun-Pets">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h3>Binglerun-Pets</h3>
-                                <p class="project-type">하이브리드 캐주얼 게임</p>
-                                <p class="project-period">2025.05.01 ~ 진행중</p>
-                                <div class="project-details">
-                                    <p><strong>역할:</strong> 팀장</p>
-                                    <ul class="project-highlights">
-                                        <li>Firebase 기반 계정/데이터 시스템</li>
-                                        <li>실시간 리더보드/친구 기능</li>
-                                        <li>상태 기반 게임 구조 설계</li>
-                                        <li>Firebase SDK 자동화 구축</li>
-                                    </ul>
-                                </div>
-                                <a href="#" class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#binglerunModal">자세히 보기</a>
-                            </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-item" data-project="binglerun">
+                        <div class="img-placeholder">
+                            <i class="fas fa-running fa-3x"></i>
+                        </div>
+                        <div class="portfolio-preview">
+                            <h3>빙글런 펫즈</h3>
+                            <p class="project-type">하이브리드 러닝 게임</p>
+                            <button class="btn btn-primary view-project">자세히 보기</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- 프로젝트 모달 -->
+    <div class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <!-- 모달 내용은 JavaScript로 동적 삽입 -->
+            </div>
+        </div>
+    </div>
 
     <!-- 게임 경험 섹션 -->
     <section id="gaming" class="py-5 bg-light">
@@ -258,10 +235,10 @@
                         <p><i class="fas fa-phone"></i> 010-2154-2574</p>
                         <p><i class="fas fa-envelope"></i> mained606@gmail.com</p>
                         <div class="social-links mt-4">
-                            <a href="https://github.com/Mained606" target="_blank" class="btn btn-dark mx-2">
+                            <a href="https://github.com/Mained606" target="_blank" class="social-button">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
-                            <a href="https://www.youtube.com/@cantex92" target="_blank" class="btn btn-danger mx-2">
+                            <a href="https://www.youtube.com/@cantex92" target="_blank" class="social-button">
                                 <i class="fab fa-youtube"></i> YouTube
                             </a>
                         </div>
@@ -278,8 +255,10 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
