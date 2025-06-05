@@ -6,6 +6,7 @@
     --light-color: #f8f9fa;
     --accent-color: #ff4081;
     --bg-color: #ffffff;
+    --bg-color-alt: #ffffff;
     --text-color: #343a40;
     --card-bg: #ffffff;
     --border-color: #eee;
@@ -21,6 +22,7 @@
 /* 다크모드 스타일 */
 [data-theme="dark"] {
     --bg-color: #1a1a1a;
+    --bg-color-alt: #1a1a1a;
     --text-color: #ffffff;
     --card-bg: #1a1a1a;
     --border-color: #404040;
@@ -31,23 +33,6 @@
     --info-text: #ffffff;
     --skill-text: #ffffff;
     --card-title: #ff4081;
-}
-
-/* 시스템 다크모드 감지 */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --bg-color: #1a1a1a;
-        --text-color: #ffffff;
-        --card-bg: #1a1a1a;
-        --border-color: #404040;
-        --modal-bg: #2d2d2d;
-        --modal-overlay: rgba(0, 0, 0, 0.95);
-        --card-text: #ffffff;
-        --section-title: #ffffff;
-        --info-text: #ffffff;
-        --skill-text: #ffffff;
-        --card-title: #ff4081;
-    }
 }
 
 body {
@@ -133,26 +118,40 @@ body {
 
 /* 섹션 공통 스타일 */
 section {
-    padding: 70px 0;
+    padding: 100px 0;
     position: relative;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+section:nth-child(even) {
+    background-color: var(--bg-color);
 }
 
 section h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     position: relative;
+    text-align: center;
 }
 
 section h2:after {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
+    width: 60px;
+    height: 4px;
     background-color: var(--accent-color);
+}
+
+/* 섹션 내부 여백 조정 */
+.section-content {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* 이미지 관련 스타일 개선 */
@@ -429,18 +428,33 @@ section h2:after {
     margin-right: 8px;
 }
 
-/* 연락처 폼 */
-.form-control {
-    border-radius: 0;
-    border: none;
-    border-bottom: 2px solid var(--primary-color);
-    padding: 15px 0;
-    margin-bottom: 20px;
+#contact {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
 }
 
-.form-control:focus {
-    box-shadow: none;
-    border-color: var(--primary-color);
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    margin: 0 8px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.social-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-button i {
+    margin-right: 8px;
 }
 
 /* 애니메이션 */
@@ -924,35 +938,6 @@ section h2:after {
     .portfolio-preview .project-type {
         font-size: 0.9em;
     }
-}
-
-.social-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 16px;
-    margin: 0 8px;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    color: #fff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    background: transparent;
-}
-
-.social-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    text-decoration: none;
-}
-
-.social-button i {
-    margin-right: 8px;
-}
-
-#contact {
-    background-color: #333;
-    color: #fff;
-    padding: 50px 0;
 }
 
 /* 섹션 제목 스타일 */
@@ -1447,4 +1432,24 @@ section h2:after {
 /* 섹션 배경색 수정 */
 section.bg-light {
     background-color: var(--bg-color) !important;
+}
+
+/* 카드 스타일 개선 */
+.skill-card, 
+.achievement-card,
+.project-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover, 
+.achievement-card:hover,
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 } 

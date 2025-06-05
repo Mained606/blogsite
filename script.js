@@ -62,9 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme === 'dark');
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        updateThemeIcon(true);
+    } else {
+        // 기본값을 라이트모드로 설정
+        document.documentElement.setAttribute('data-theme', 'light');
+        updateThemeIcon(false);
     }
     
     // 테마 토글 이벤트
