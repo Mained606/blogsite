@@ -63,120 +63,69 @@ body {
 
 .particle {
     position: absolute;
-    background: var(--particle-color);
+    background: linear-gradient(
+        45deg,
+        rgba(255, 64, 129, 0.2),
+        rgba(64, 129, 255, 0.2)
+    );
     border-radius: 50%;
-    filter: blur(5px);
-    animation: float var(--duration) ease-in-out var(--delay) infinite;
+    filter: blur(20px);
+    animation: morphFloat var(--duration) ease-in-out var(--delay) infinite;
     opacity: 0;
     mix-blend-mode: screen;
 }
 
-@keyframes float {
+[data-theme="dark"] .particle {
+    background: linear-gradient(
+        45deg,
+        rgba(255, 64, 129, 0.15),
+        rgba(64, 129, 255, 0.15)
+    );
+    mix-blend-mode: screen;
+}
+
+@keyframes morphFloat {
     0% {
-        transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
+        transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale)) rotate(0deg);
+        border-radius: 50%;
         opacity: 0;
     }
     25% {
         opacity: 0.4;
+        transform: translate(calc(var(--translate-x) * -0.5), calc(var(--translate-y) * -0.5)) 
+                  scale(calc(var(--scale) * 1.1)) rotate(90deg);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
     50% {
-        transform: translate(calc(var(--translate-x) * -0.5), calc(var(--translate-y) * -0.5)) scale(calc(var(--scale) * 1.1));
+        transform: translate(calc(var(--translate-x) * 0.2), calc(var(--translate-y) * 0.2)) 
+                  scale(calc(var(--scale) * 1.2)) rotate(180deg);
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
         opacity: 0.3;
     }
     75% {
         opacity: 0.4;
+        transform: translate(calc(var(--translate-x) * -0.3), calc(var(--translate-y) * -0.3)) 
+                  scale(calc(var(--scale) * 1.1)) rotate(270deg);
+        border-radius: 40% 60% 30% 70% / 70% 30% 60% 40%;
     }
     100% {
-        transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
+        transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale)) rotate(360deg);
+        border-radius: 50%;
         opacity: 0;
     }
 }
 
-[data-theme="dark"] .particle {
-    mix-blend-mode: screen;
-    background: var(--particle-color);
+/* 별 애니메이션 제거 */
+.stars {
+    display: none;
 }
 
-/* 네비게이션 바 */
-.navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar.scrolled {
-    background-color: rgba(33, 37, 41, 0.95) !important;
-    padding: 0.5rem 0;
-}
-
-.navbar .nav-link {
-    position: relative;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-}
-
-.navbar .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    background-color: var(--accent-color);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.navbar .nav-link:hover::after {
-    width: 100%;
-}
-
-.navbar .nav-link.active::after {
-    width: 100%;
-}
-
-/* 히어로 섹션 */
-.hero-section {
-    height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: none;
-}
-
-.hero-section .display-4 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-
-.hero-section .lead {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.hero-section .social-links a {
-    transition: transform 0.3s ease;
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-}
-
-/* 섹션 공통 스타일 */
+/* 섹션 배경 스타일 업데이트 */
 section {
-    padding: 100px 0;
     position: relative;
     border-bottom: 1px solid var(--border-color);
     background-color: rgba(var(--bg-rgb), 0.2) !important;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(10px);
     z-index: 2;
 }
 
@@ -1455,8 +1404,8 @@ section h2:after {
 .info-group {
     background-color: rgba(var(--bg-rgb), 0.2);
     border: 1px solid var(--border-color);
-    backdrop-filter: blur(3px);
-    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
     padding: 1.5rem;
     border-radius: 10px;
 }
@@ -1511,15 +1460,16 @@ section.bg-light {
     border-radius: 15px;
     padding: 2rem;
     margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    transition: all 0.4s ease;
 }
 
 .skill-card:hover, 
 .achievement-card:hover,
 .project-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(var(--text-color), 0.2);
 }
 
 /* 섹션 배경색 재정의 */
@@ -1528,7 +1478,7 @@ section.bg-light,
 #achievements,
 #contact {
     background-color: rgba(var(--bg-rgb), 0.2) !important;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(10px);
 }
 
 /* 카드 컨테이너 배경 */
@@ -1548,10 +1498,11 @@ section.bg-light,
 .leadership-group,
 .outcomes-group,
 .contact-info {
-    background-color: rgba(var(--bg-rgb), 0.2);
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(3px);
-    transition: all 0.3s ease;
+    background: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--text-color), 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    transition: all 0.4s ease;
     padding: 1.5rem;
     border-radius: 10px;
 }
@@ -1584,6 +1535,149 @@ section.bg-light,
 
 /* 히어로 섹션은 원래 배경 유지 */
 .hero-section {
+    min-height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg');
-    backdrop-filter: none;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, 
+        rgba(255, 64, 129, 0.2) 0%,
+        rgba(64, 129, 255, 0.2) 50%,
+        rgba(0, 0, 0, 0) 100%);
+    opacity: 0.5;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section .display-4 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-section .lead {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-section .social-links a {
+    transition: all 0.4s ease;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    margin: 0 0.5rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.1);
+}
+
+.hero-section .social-links a:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255,64,129,0.4);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 100vh;
+        padding: 80px 0;
+    }
+
+    .hero-section .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section .lead {
+        font-size: 1.2rem;
+    }
+
+    .hero-section .social-links a {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+        margin: 0.3rem;
+    }
+}
+
+/* 네비게이션 바 */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(var(--bg-rgb), 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar.scrolled {
+    background: rgba(33, 37, 41, 0.95) !important;
+    padding: 0.5rem 0;
+}
+
+.navbar .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar .nav-link.active::after {
+    width: 100%;
 } 
