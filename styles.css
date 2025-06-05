@@ -1690,11 +1690,15 @@ section.bg-light,
     width: 100%;
 }
 
+/* 비디오 컨테이너 스타일 */
 .video-container {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 비율 */
+    padding-bottom: 56.25%; /* 16:9 비율 */
     margin-bottom: 2rem;
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .video-container iframe {
@@ -1703,11 +1707,11 @@ section.bg-light,
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border: none;
 }
 
 @media (max-width: 768px) {
     .video-container {
-        padding-top: 56.25%; /* 모바일에서도 16:9 비율 유지 */
+        padding-bottom: 56.25%; /* 모바일에서도 16:9 비율 유지 */
     }
 } 
