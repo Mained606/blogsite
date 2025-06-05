@@ -18,6 +18,7 @@ class TypeWriter {
         this.textIndex = 0;
         this.charIndex = 0;
         this.isDeleting = false;
+        this.colors = ['#FF6B6B', '#4ECDC4', '#66B2FF', '#FFD93D'];
         this.type();
     }
 
@@ -31,6 +32,9 @@ class TypeWriter {
             this.element.textContent = currentText.substring(0, this.charIndex + 1);
             this.charIndex++;
         }
+
+        // 현재 텍스트에 맞는 색상 적용
+        this.element.style.color = this.colors[this.textIndex % this.colors.length];
 
         let typeSpeed = this.speed;
 
