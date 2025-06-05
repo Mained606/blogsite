@@ -39,6 +39,10 @@
     --particle-color: rgba(255, 64, 129, 0.15);
 }
 
+[data-theme="dark"] h5 {
+    color: #e6e6e6;
+}
+
 body {
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.6;
@@ -733,7 +737,7 @@ section h2:after {
 }
 
 .info-list strong {
-    color: var(--dark-color);
+    color: #979797;
     margin-right: 10px;
 }
 
@@ -1159,7 +1163,7 @@ section h2:after {
 }
 
 .resume-section h5 {
-    color: var(--dark-color);
+    color: #979797;
     font-size: 1.2em;
     margin: 20px 0 15px;
     font-weight: 600;
