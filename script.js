@@ -585,8 +585,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ${project.youtube ? `
             <div class="video-container mb-4">
                 <iframe
-                    width="100%"
-                    height="400"
                     src="https://www.youtube.com/embed/${project.youtube}"
                     title="${project.title} 시연 영상"
                     frameborder="0"
@@ -679,6 +677,12 @@ document.addEventListener('DOMContentLoaded', function() {
         modalBody.scrollTop = 0;
         modalContent.scrollTop = 0;
         modal.scrollTop = 0;
+        
+        // 유튜브 영상 중지
+        const youtubeIframe = modal.querySelector('iframe[src*="youtube"]');
+        if (youtubeIframe) {
+            youtubeIframe.src = youtubeIframe.src;
+        }
         
         setTimeout(() => {
             modal.style.display = 'none';
@@ -840,6 +844,13 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
     function closeResumeModal() {
         resumeModal.querySelector('.modal-content').style.opacity = '0';
         resumeModal.querySelector('.modal-content').style.transform = 'translateY(20px)';
+        
+        // 유튜브 영상 중지
+        const youtubeIframe = resumeModal.querySelector('iframe[src*="youtube"]');
+        if (youtubeIframe) {
+            youtubeIframe.src = youtubeIframe.src;
+        }
+        
         setTimeout(() => {
             resumeModal.style.display = 'none';
             document.body.style.overflow = 'auto';
