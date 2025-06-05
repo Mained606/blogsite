@@ -1667,7 +1667,7 @@ section.bg-light,
 .navbar .nav-link {
     position: relative;
     padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .navbar .nav-link::after {
@@ -1714,4 +1714,14 @@ section.bg-light,
     .video-container {
         padding-bottom: 56.25%; /* 모바일에서도 16:9 비율 유지 */
     }
+}
+
+.navbar .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--accent-color);
 } 
