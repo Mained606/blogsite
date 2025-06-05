@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { url: "https://github.com/JWS-SOFT/Bingglerun-Pets", icon: "github", text: "GitHub" }
             ],
             tech: ["상태 패턴", "FireBase Consol (Realtime DB, Auth)"],
-            overview: "빙글런 펫즈는 무한의 계단과 쿠키런의 게임플레이 메커니즘을 결합한 독특한 러닝 게임입니다. 플레이어는 나선형 계단을 따라 상승하면서 장애물을 피하고 아이템을 수집하며, 다양한 펫과 함께 끝없는 모험을 즐길 수 있습니다. 수직적 이동과 수평적 러닝의 조화로운 결합을 통해 새로운 게임플레이 경험을 제공합니다.",
+            overview: "빙글런 펫즈는 무한의 계단과 쿠키런의 게임플레이 메커니즘을 결합한 독특한 러닝 게임입니다. 플레이어는 나선형 계단을 따라 상승하며 장애물을 피하고 아이템을 수집하며, 다양한 펫과 함께 끝없는 모험을 즐길 수 있습니다. 수직적 이동과 수평적 러닝의 조화로운 결합을 통해 새로운 게임플레이 경험을 제공합니다.",
             responsibilities: [
                 {
                     title: "Firebase 인증 시스템 구현",
@@ -885,4 +885,97 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
         const progress = (window.scrollY / totalHeight) * 100;
         scrollProgress.style.width = `${progress}%`;
     });
+
+    // 배경 별 애니메이션 생성
+    function createStars() {
+        const starsContainer = document.createElement('div');
+        starsContainer.className = 'stars';
+        document.body.appendChild(starsContainer);
+
+        const numberOfStars = 50;
+        
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // 랜덤 위치 설정
+            star.style.left = `${Math.random() * 100}%`;
+            
+            // 랜덤 크기 설정 (1-3px)
+            const size = 1 + Math.random() * 2;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // 랜덤 애니메이션 지속 시간 설정 (5-15초)
+            const duration = 5 + Math.random() * 10;
+            star.style.animation = `fall ${duration}s linear infinite`;
+            
+            // 랜덤 시작 딜레이 설정
+            star.style.animationDelay = `${Math.random() * 15}s`;
+            
+            starsContainer.appendChild(star);
+        }
+    }
+
+    // 페이지 로드 시 별 생성
+    createStars();
+
+    // 배경 파티클 애니메이션 생성
+    function createParticles() {
+        const container = document.createElement('div');
+        container.className = 'particles-container';
+        document.body.appendChild(container);
+
+        const numberOfParticles = 10; // 파티클 개수 감소
+        
+        for (let i = 0; i < numberOfParticles; i++) {
+            createParticle(container);
+        }
+
+        // 주기적으로 새 파티클 생성
+        setInterval(() => {
+            if (container.children.length < 15) { // 최대 개수 감소
+                createParticle(container);
+            }
+        }, 3000); // 생성 간격 증가
+    }
+
+    function createParticle(container) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // 랜덤 크기 (80-150px로 감소)
+        const size = 80 + Math.random() * 70;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // 랜덤 시작 위치
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // 랜덤 이동 거리 (200-300px로 감소)
+        const translateX = 200 + Math.random() * 100;
+        const translateY = 200 + Math.random() * 100;
+        const scale = 0.8 + Math.random() * 0.2; // 크기 변화 감소
+        
+        // 랜덤 애니메이션 지속 시간 (15-20초)
+        const duration = 15 + Math.random() * 5;
+        const delay = Math.random() * 5;
+        
+        particle.style.setProperty('--translate-x', `${translateX}px`);
+        particle.style.setProperty('--translate-y', `${translateY}px`);
+        particle.style.setProperty('--scale', scale);
+        particle.style.setProperty('--duration', `${duration}s`);
+        particle.style.setProperty('--delay', `${delay}s`);
+        
+        container.appendChild(particle);
+        
+        // 애니메이션 종료 후 파티클 제거
+        setTimeout(() => {
+            container.removeChild(particle);
+        }, (duration + delay) * 1000);
+    }
+
+    // 페이지 로드 시 파티클 생성 시작
+    createParticles();
 }); 

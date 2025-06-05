@@ -6,6 +6,7 @@
     --light-color: #f8f9fa;
     --accent-color: #ff4081;
     --bg-color: #ffffff;
+    --bg-rgb: 255, 255, 255;
     --bg-color-alt: #ffffff;
     --text-color: #343a40;
     --card-bg: #ffffff;
@@ -17,14 +18,16 @@
     --info-text: #343a40;
     --skill-text: #343a40;
     --card-title: #343a40;
+    --particle-color: rgba(255, 64, 129, 0.2);
 }
 
 /* 다크모드 스타일 */
 [data-theme="dark"] {
     --bg-color: #1a1a1a;
+    --bg-rgb: 26, 26, 26;
     --bg-color-alt: #1a1a1a;
     --text-color: #ffffff;
-    --card-bg: #1a1a1a;
+    --card-bg: rgba(26, 26, 26, 0.7);
     --border-color: #404040;
     --modal-bg: #2d2d2d;
     --modal-overlay: rgba(0, 0, 0, 0.95);
@@ -33,6 +36,7 @@
     --info-text: #ffffff;
     --skill-text: #ffffff;
     --card-title: #ff4081;
+    --particle-color: rgba(255, 64, 129, 0.15);
 }
 
 body {
@@ -42,6 +46,55 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* 배경 파티클 애니메이션 */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: var(--particle-color);
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: float var(--duration) ease-in-out var(--delay) infinite;
+    opacity: 0;
+    mix-blend-mode: screen;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(calc(var(--translate-x) * -0.5), calc(var(--translate-y) * -0.5)) scale(calc(var(--scale) * 1.1));
+        opacity: 0.3;
+    }
+    75% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
+        opacity: 0;
+    }
+}
+
+[data-theme="dark"] .particle {
+    mix-blend-mode: screen;
+    background: var(--particle-color);
 }
 
 /* 네비게이션 바 */
@@ -97,6 +150,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    backdrop-filter: none;
 }
 
 .hero-section .display-4 {
@@ -120,12 +174,14 @@ body {
 section {
     padding: 100px 0;
     position: relative;
-    background-color: var(--bg-color);
     border-bottom: 1px solid var(--border-color);
+    background-color: rgba(var(--bg-rgb), 0.2) !important;
+    backdrop-filter: blur(3px);
+    z-index: 2;
 }
 
 section:nth-child(even) {
-    background-color: var(--bg-color);
+    background-color: rgba(var(--bg-rgb), 0.2);
 }
 
 section h2 {
@@ -192,6 +248,8 @@ section h2:after {
     margin-bottom: 30px;
     cursor: pointer;
     overflow: hidden;
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
 }
 
 .portfolio-item:hover {
@@ -326,7 +384,8 @@ section h2:after {
 
 /* 게임 성과 카드 */
 .achievement-card {
-    background-color: var(--card-bg);
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -352,7 +411,8 @@ section h2:after {
 
 /* 기술 스택 카드 스타일 */
 .skill-card {
-    background-color: var(--card-bg);
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -394,21 +454,20 @@ section h2:after {
 
 /* 연락처 정보 */
 .contact-info {
-    background: transparent;
-    padding: 30px;
-    border-radius: 10px;
-    color: #fff;
+    background: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
+    color: var(--text-color);
 }
 
 .contact-info p {
     margin-bottom: 15px;
     font-size: 1.1em;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .contact-info i {
     margin-right: 10px;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .contact-info .social-links a {
@@ -429,8 +488,7 @@ section h2:after {
 }
 
 #contact {
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(var(--bg-rgb), 0.2);
     padding: 50px 0;
 }
 
@@ -439,17 +497,18 @@ section h2:after {
     align-items: center;
     padding: 8px 16px;
     margin: 0 8px;
-    border: 1px solid #fff;
+    border: 1px solid var(--text-color);
     border-radius: 4px;
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     transition: all 0.3s ease;
     background: transparent;
 }
 
 .social-button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--accent-color);
     color: #fff;
+    border-color: var(--accent-color);
     text-decoration: none;
 }
 
@@ -468,7 +527,8 @@ section h2:after {
 
 /* 자기소개 섹션 스타일 */
 .about-content {
-    background: white;
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -580,6 +640,8 @@ section h2:after {
     margin-bottom: 30px;
     cursor: pointer;
     overflow: hidden;
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
 }
 
 .portfolio-item:hover {
@@ -645,7 +707,7 @@ section h2:after {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.9);
-    z-index: 1000;
+    z-index: 1001;
     overflow-y: auto;
     padding: 20px;
 }
@@ -785,7 +847,8 @@ section h2:after {
 
 /* 문제 해결 카드 */
 .challenge-card {
-    background: var(--card-bg);
+    background: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -805,7 +868,8 @@ section h2:after {
 /* 리더십 및 성과 섹션 */
 .leadership-group,
 .outcomes-group {
-    background-color: var(--card-bg);
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 20px;
     border-radius: 10px;
     border: 1px solid var(--border-color);
@@ -835,7 +899,8 @@ section h2:after {
 
 /* 결론 */
 .conclusion {
-    background-color: var(--card-bg);
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 25px;
     border-radius: 10px;
     margin-top: 30px;
@@ -1083,7 +1148,7 @@ section h2:after {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.9);
-    z-index: 1000;
+    z-index: 1001;
     overflow-y: auto;
     padding: 20px;
 }
@@ -1176,7 +1241,8 @@ section h2:after {
 }
 
 .project-item {
-    background: var(--card-bg);
+    background: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -1212,7 +1278,8 @@ section h2:after {
 }
 
 .achievement-item {
-    background-color: var(--card-bg);
+    background-color: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
     padding: 20px;
     border-radius: 10px;
     border: 1px solid var(--border-color);
@@ -1386,9 +1453,10 @@ section h2:after {
 .project-item,
 .challenge-card,
 .info-group {
-    background-color: var(--card-bg);
+    background-color: rgba(var(--bg-rgb), 0.2);
     border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(3px);
+    transition: all 0.3s ease;
     padding: 1.5rem;
     border-radius: 10px;
 }
@@ -1438,7 +1506,7 @@ section.bg-light {
 .skill-card, 
 .achievement-card,
 .project-item {
-    background-color: var(--card-bg);
+    background-color: rgba(var(--bg-rgb), 0.2);
     border: 1px solid var(--border-color);
     border-radius: 15px;
     padding: 2rem;
@@ -1452,4 +1520,70 @@ section.bg-light {
 .project-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 섹션 배경색 재정의 */
+section.bg-light,
+#skills,
+#achievements,
+#contact {
+    background-color: rgba(var(--bg-rgb), 0.2) !important;
+    backdrop-filter: blur(3px);
+}
+
+/* 카드 컨테이너 배경 */
+.skill-cards-container,
+.achievements-container,
+.contact-container {
+    background-color: transparent;
+}
+
+/* 카드 스타일 통일 */
+.skill-card, 
+.achievement-card,
+.project-item,
+.about-content, 
+.challenge-card,
+.info-group,
+.leadership-group,
+.outcomes-group,
+.contact-info {
+    background-color: rgba(var(--bg-rgb), 0.2);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(3px);
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+/* 연락처 정보 스타일 수정 */
+.contact-info {
+    background: rgba(var(--bg-rgb), 0.2);
+    backdrop-filter: blur(3px);
+    color: var(--text-color);
+}
+
+.contact-info p,
+.contact-info i {
+    color: var(--text-color);
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] section,
+[data-theme="dark"] #skills,
+[data-theme="dark"] #achievements,
+[data-theme="dark"] #contact {
+    background-color: rgba(var(--bg-rgb), 0.2) !important;
+}
+
+[data-theme="dark"] .skill-card,
+[data-theme="dark"] .achievement-card,
+[data-theme="dark"] .contact-info {
+    background-color: rgba(var(--bg-rgb), 0.2);
+}
+
+/* 히어로 섹션은 원래 배경 유지 */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg');
+    backdrop-filter: none;
 } 
