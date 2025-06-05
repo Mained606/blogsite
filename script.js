@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 development: "Unity 6 2D, C#",
                 build: "Android APK"
             },
-            youtube: "",
+            youtube: "https://youtu.be/3RUFtVf6tYM",
             links: [
                 { url: "https://github.com/JWS-SOFT/Bingglerun-Pets", icon: "github", text: "GitHub" }
             ],
