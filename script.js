@@ -926,7 +926,7 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
         container.className = 'particles-container';
         document.body.appendChild(container);
 
-        const numberOfParticles = 10; // 파티클 개수 감소
+        const numberOfParticles = 8; // 파티클 개수 감소
         
         for (let i = 0; i < numberOfParticles; i++) {
             createParticle(container);
@@ -934,18 +934,18 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
 
         // 주기적으로 새 파티클 생성
         setInterval(() => {
-            if (container.children.length < 15) { // 최대 개수 감소
+            if (container.children.length < 12) { // 최대 개수 제한
                 createParticle(container);
             }
-        }, 3000); // 생성 간격 증가
+        }, 4000); // 생성 간격 증가
     }
 
     function createParticle(container) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // 랜덤 크기 (80-150px로 감소)
-        const size = 80 + Math.random() * 70;
+        // 랜덤 크기 (120-250px)
+        const size = 120 + Math.random() * 130;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         
@@ -953,13 +953,13 @@ GitHub, Notion, Discord 기반의 협업 툴을 활용하며 코드 품질 관�
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.top = `${Math.random() * 100}%`;
         
-        // 랜덤 이동 거리 (200-300px로 감소)
-        const translateX = 200 + Math.random() * 100;
-        const translateY = 200 + Math.random() * 100;
-        const scale = 0.8 + Math.random() * 0.2; // 크기 변화 감소
+        // 랜덤 이동 거리 (300-500px)
+        const translateX = 300 + Math.random() * 200;
+        const translateY = 300 + Math.random() * 200;
+        const scale = 0.8 + Math.random() * 0.4;
         
-        // 랜덤 애니메이션 지속 시간 (15-20초)
-        const duration = 15 + Math.random() * 5;
+        // 랜덤 애니메이션 지속 시간 (20-30초)
+        const duration = 20 + Math.random() * 10;
         const delay = Math.random() * 5;
         
         particle.style.setProperty('--translate-x', `${translateX}px`);
