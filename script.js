@@ -1,3 +1,4 @@
+/* Version 2.0 - Fixed YouTube iframe issues */
 // AOS 초기화
 AOS.init({
     duration: 800,
