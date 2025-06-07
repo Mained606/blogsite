@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
             period: "2023.11.25 ~ 2023.12.31 (5주)",
             teamSize: "5명 (부 팀장 및 개발 팀장)",
             environment: {
-                development: "Unity 6 (URP), C#, Meta Quest",
+                development: "Unity 6000.0.26f1 (URP), C#, Meta Quest",
                 build: "PC, Android APK"
             },
             youtube: "NVzRJA02070",
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             teamSize: "6명 (부 팀장 및 개발 팀장)",
             environment: {
-                development: "Unity 2022.3 (URP), C#",
+                development: "Unity 6000.0.32f1 (URP), C#",
                 build: "PC"
             },
             youtube: "oQkfw0fAKwE",
@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
             period: "2025.05.01 ~ 진행중",
             teamSize: "4명 (팀장)",
             environment: {
-                development: "Unity 6 2D, C#",
+                development: "Unity 6000.0.48f1 2D, C#",
                 build: "Android APK"
             },
             youtube: "3RUFtVf6tYM",
