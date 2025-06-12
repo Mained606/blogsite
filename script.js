@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
         spaceship: {
             title: "SpaceShipLooting VR",
             type: "VR 잠입 액션 게임",
-            period: "2023.11.25 ~ 2023.12.31 (5주)",
+            period: "2024.11.25 ~ 2024.12.31 (5주)",
             teamSize: "5명 (부 팀장 및 개발 팀장)",
             environment: {
                 development: "Unity 6000.0.26f1 (URP), C#, Meta Quest",
