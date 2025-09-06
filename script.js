@@ -451,8 +451,8 @@ document.addEventListener('DOMContentLoaded', function() {
         binglerun: {
             title: "빙글런 펫즈",
             type: "하이브리드 러닝 게임",
-            period: "2025.05.01 ~ 진행중",
-            teamSize: "4명 (팀장)",
+            period: "2025.05.01 ~ 2025.06.01(개발 중단)",
+            teamSize: "3명 (팀장)",
             environment: {
                 development: "Unity 6000.0.48f1 2D, C#",
                 build: "Android APK"
